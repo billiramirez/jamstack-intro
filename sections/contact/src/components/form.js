@@ -40,8 +40,19 @@ const Form = () => {
     event.preventDefault();
     setStatus("PENDING");
     // TODO Actually send the message
-    console.log(state);
-    setTimeout(() => setStatus("SUCCESS"), 1000);
+    fetch("/api/contact", {
+      method: "POST",
+      body: JSON.stringify(state),
+    })
+      .then((rawData) => rawData.json())
+      .then((response) => {
+        console.log(response);
+        setStatus("SUCCESS");
+      })
+      .catch((err) => {
+        console.log(err);
+        setStatus("ERROR");
+      });
   };
 
   if (state.status === "SUCCESS") {
