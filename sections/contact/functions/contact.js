@@ -19,7 +19,7 @@ exports.handler = (event, _context, callback) => {
   mg.messages().send(email, (err, body) => {
     callback(err, {
       statusCode: 200,
-      body: JSON.stringify({ hey: "there" }),
+      body: JSON.stringify(body),
     });
   });
 };
