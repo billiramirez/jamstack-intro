@@ -44,13 +44,13 @@ const Form = () => {
       method: "POST",
       body: JSON.stringify(state),
     })
-      .then((rawData) => rawData.json())
+      .then((response) => response.json())
       .then((response) => {
         console.log(response);
         setStatus("SUCCESS");
       })
-      .catch((err) => {
-        console.log(err);
+      .catch((error) => {
+        console.log(error);
         setStatus("ERROR");
       });
   };
